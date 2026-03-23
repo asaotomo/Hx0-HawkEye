@@ -3,24 +3,8 @@
 
 【[中文](./README.md) / English】
 
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Network-No_system_proxy-success)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch-00A86B)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Capture-Intercept-4285F4)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  
-<!-- 这是一张图片，ocr 内容为： -->
-![](https://img.shields.io/badge/AI-BYOK_optional-orange)
+
+![](https://img.shields.io/badge/Network-No_system_proxy-success)  ![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  ![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch-00A86B)  ![](https://img.shields.io/badge/Capture-Intercept-4285F4)  ![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  ![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  ![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  ![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  ![](https://img.shields.io/badge/AI-BYOK_optional-orange)
 
 ## 1. What it is
 **Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept, replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
