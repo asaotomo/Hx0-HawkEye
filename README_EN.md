@@ -232,7 +232,23 @@ After install, open the **in-product User Manual** for full tutorials, **Chrome 
 
 ---
 
-## 9. Contact & feedback
+## 9. How to Obtain the Activation Code
+
+New users can try it for free for 30 minutes. If you are satisfied with the trial, you are welcome to purchase the product activation code through the following methods:
+
++ **Method One:** Purchase the activation code on [Xianyu (Idle Fish)]
+  
+1.[Purchase Link 1](https://m.tb.cn/h.igkesa4?tk=dNrvUzjjrXt)
+
+2.[Purchase Link 2](https://m.tb.cn/h.ihX27bl?tk=Qfan5Zb5B82)
+
++ **Method Two:​** Join the [Hx0 Team] Knowledge Planet. The first 100 members can obtain a one-year free authorization activation code (the first 10 members can get a permanent authorization), and other members of the planet can enjoy a 20% discount on purchases.
+<img width="280" alt="image" src="https://github.com/user-attachments/assets/7e786e1b-815c-46d5-8b7d-252b7eca5d79" />
+
++ **Method Three:​** Overseas users, please contact the official email (hx0studio@foxmail.com) to purchase an activation code.
+---
+
+## 10. Contact & feedback
 **Hx0 Team (Hx0战队)**
 
 + WeChat official account / knowledge planet: **Hx0战队**
@@ -242,7 +258,7 @@ Please include browser + version, extension version, repro steps, and screenshot
 
 ---
 
-## 10. Disclaimer
+## 11. Disclaimer
 This project and extension are for **security research, development debugging, and authorized testing** only. Obey applicable laws and scope of authorization.  
 The authors and contributors **assume no liability** for **unauthorized testing** or its consequences.
 
