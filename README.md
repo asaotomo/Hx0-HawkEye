@@ -1,5 +1,7 @@
 # 🦅 Hx0 鹰眼（Hx0 HawkEye）：全栈式轻量抓包与 AI 安全审计扩展
 
+【[English](./README_EN.md)/中文】
+
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/网络-无需系统代理-success)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/形态-侧栏一体化-5865F2)<!-- 这是一张图片，ocr 内容为： -->
