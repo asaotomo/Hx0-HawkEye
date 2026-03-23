@@ -11,7 +11,7 @@
 ![](https://img.shields.io/badge/能力-暗链检测-333333)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/AI-BYOK_可选-orange)
 
-### 一、它是什么
+## 一、它是什么
 **告别繁琐代理，真正开箱即用。** Hx0 鹰眼是一款原生浏览器扩展（支持 Chrome / Firefox 及主流 Chromium 内核），直接在侧边栏为你提供完整的**抓包拦截、流量重放、微型 Fuzz 与 AI 智能审计**闭环。
 
 <!-- 这是一张图片，ocr 内容为： -->
