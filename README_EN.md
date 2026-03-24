@@ -143,7 +143,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 ## 6. Offline install (release build)
 This extension uses low-level network capture and security APIs and is **not listed on the Chrome or Firefox add-on stores**. Download the **release** package from this repo’s **Releases** page (or mirrors/attachments noted in the release notes), then follow your browser below for **offline install**.
 
-> Actual archive names follow each release. Examples: `Hx0鹰眼-轻量级抓包与安全分析工具-Chrome-V1.0.0正式版` (folder / `.crx`) and `Hx0鹰眼-轻量级抓包与安全分析工具-Firefox-V1.0.0正式版` (folder / `.xpi`). Version numbers update per release.
+> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.0-Official.Release` (folder / `.crx`) and `Hx0-HawkEye-Firefox-V1.0.0-Official.Release` (folder / `.xpi`). Version numbers update per release.
 >
 
 ### Browser compatibility & recommended methods
@@ -165,8 +165,8 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
     - **360 Speed**: `chrome://extensions/`  
     - **QQ Browser**: `qqbrowser://extensions/`  
     - **Sogou**: `se://extensions/`
-2. Enable **Developer mode** (Edge: “开发人员模式”; often bottom-left or top-right).
-3. **Drag** `Hx0鹰眼-轻量级抓包与安全分析工具-Chrome-V1.0.0正式版.crx` onto the page.
+2. Enable **Developer mode** (Edge: “Developer mode”; often bottom-left or top-right).
+3. **Drag** `Hx0-HawkEye-Chrome-V1.0.0-Official.Release.crx` onto the page.
 4. Confirm **Add extension**.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -175,7 +175,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
 #### 2. ⭐⭐⭐⭐ · Google Chrome
 Chrome tightly restricts non-store `.crx`; prefer **unpacked folder**.
 
-1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0鹰眼-轻量级抓包与安全分析工具-Chrome-V1.0.0正式版`.
+1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.0-Official.Release`.
 2. Open `chrome://extensions/`.
 3. Enable **Developer mode** (top right).
 4. **Load unpacked** → select that folder.
@@ -197,7 +197,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 3. Open `about:addons` → Extensions.
 4. Gear **⚙** → **Install Add-on From File…**
-5. Choose `Hx0鹰眼-轻量级抓包与安全分析工具-Firefox-V1.0.0正式版.xpi`.
+5. Choose `Hx0-HawkEye-Firefox-V1.0.0-Official.Release.xpi`.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774270404338-e04bc8ac-19af-42ba-b952-5dc0852b4902.png)
@@ -206,7 +206,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 1. After each Firefox start, open `about:debugging`.
 2. **This Firefox** → **Load Temporary Add-on…**
-3. In the unpacked `Hx0鹰眼-轻量级抓包与安全分析工具-Firefox-V1.0.0正式版` folder, select `manifest.json`.
+3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.0-Official.Release` folder, select `manifest.json`.
 4. Repeat after **every** browser restart.
 
 <!-- 这是一张图片，ocr 内容为： -->
