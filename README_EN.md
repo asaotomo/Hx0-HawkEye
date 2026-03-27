@@ -104,7 +104,43 @@ Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **
 
 ---
 
-## 4. Product strengths
+## 4. Editions (Community / Pro)
+
+Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **30-minute first-install Pro trial**.
+
+- **Community** keeps the essential loop: **capture → inspect → normal replay → basic encode/decode**.
+- **Pro** unlocks **active traffic control, in-page replay / fuzzing, AI, dark-link review, batch workbenches, and advanced encode/decode tools**.
+- **First-install trial** grants **full Pro capability for 30 minutes**. If no activation code is applied after the trial, the product **automatically falls back to Community**.
+
+### Feature matrix
+
+| Feature | Community | Pro | Notes |
+| --- | --- | --- | --- |
+| Capture toggle, target host / IP, capture types / suffix filters | ✅ | ✅ | Community already covers the core capture setup |
+| History, current-page / all-packets switch, host / method / status filters | ✅ | ✅ | Basic locating and triage stay available |
+| Pretty / Raw / Hex / Render, copy / single-item export / copy full URL | ✅ | ✅ | Community keeps the core detail-audit workflow |
+| Built-in sensitive-information detection and rollup view | ✅ | ✅ | Built-in rules remain available in Community |
+| Normal replay | ✅ | ✅ | Community keeps the key validation loop intact |
+| Floating ball, save as new tab, language switching | ✅ | ✅ | Everyday convenience stays unlocked |
+| **Basic encode/decode**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex encode & decode | ✅ | ✅ | Available directly in Community |
+| **Advanced encode/decode**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, timestamp conversion | ❌ | ✅ | For deeper validation, signing, and analysis workflows |
+| Intercept toggle, modify / release / drop / release all / drop all | ❌ | ✅ | Represents active traffic control |
+| In-page replay, in-page Fuzz, Micro Fuzz, mark injection point | ❌ | ✅ | Useful for dynamic pages, WAF paths, and focused testing |
+| Switch request method, replay target switching | ❌ | ✅ | Useful for multi-environment validation |
+| AI analysis settings, AI result analysis, AI analysis, AI case generation | ❌ | ✅ | AI capabilities are part of Pro |
+| Dark-link & static threat detection, report export, trusted roots | ❌ | ✅ | Static review, reporting, and false-positive reduction |
+| Full deep search, custom regex rules, keyword library | ❌ | ✅ | Advanced search and rule-extension features |
+| Batch export, batch delete, batch replay, batch AI analysis, batch dark-link analysis | ❌ | ✅ | Batch workbenches are Pro-only |
+
+### Practical boundary
+
+- **Community is for** viewing, understanding, first-pass validation, and basic encode/decode work.
+- **Pro is for** active traffic control, page-context execution, mutation testing, AI-assisted review, dark-link workflows, and batch output.
+- If your goal is to confirm the product value first, Community already keeps the most important daily path available.
+
+---
+
+## 5. Product strengths
 1. **No proxy wall**: extension form factor—**no separate JVM, no dedicated proxy port**; configure targets and capture.  
 2. **Session match**: same **same-origin session** as the active tab; fewer **random logouts** on replay.  
 3. **One workbench**: history, intercept, replay, encoders, micro Fuzz, sensitive, dark-link, AI—**same sidebar**.  
@@ -117,7 +153,7 @@ Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **
 
 ---
 
-## 5. Comparison with common tools
+## 6. Comparison with common tools
 Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Burp Suite**, **Yakit**, **HackBar / simple extensions**. **Enterprise deep scanning, complex Intruder, non-browser traffic** still belong on dedicated platforms—use **alongside** this product.
 
 | Dimension | **Hx0 HawkEye** | **Burp Suite** | **Yakit** | **HackBar / simple extensions** |
@@ -140,7 +176,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 
 ---
 
-## 6. Offline install (release build)
+## 7. Offline install (release build)
 This extension uses low-level network capture and security APIs and is **not listed on the Chrome or Firefox add-on stores**. Download the **release** package from this repo’s **Releases** page (or mirrors/attachments noted in the release notes), then follow your browser below for **offline install**.
 
 > Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.0-Official.Release` (folder / `.crx`) and `Hx0-HawkEye-Firefox-V1.0.0-Official.Release` (folder / `.xpi`). Version numbers update per release.
@@ -219,12 +255,12 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 ---
 
-## 7. User manual
+## 8. User manual
 After install, open the **in-product User Manual** for full tutorials, **Chrome / Firefox differences**, **FAQ**, and **licensing** (exact entry depends on build).
 
 ---
 
-## 8. Security & compliance
+## 9. Security & compliance
 + Use capture, intercept, replay, and Fuzz **only on systems you are authorized to test**.  
 + **AI analysis** may send traffic to third-party or internal model endpoints—**redact** and assess cross-border / compliance rules.  
 + Use **Render** and similar features in trusted environments; sandboxing reduces but does not remove risk from malicious responses.  
@@ -232,9 +268,9 @@ After install, open the **in-product User Manual** for full tutorials, **Chrome 
 
 ---
 
-## 9. How to Obtain the Activation Code
+## 10. How to Obtain the Activation Code
 
-New users can try it for free for 30 minutes. If you are satisfied with the trial, you are welcome to purchase the product activation code through the following methods:
+New users can first use the **full Pro trial for 30 minutes**. When the trial ends without activation, the product automatically falls back to **Community**. If the experience fits your workflow, you can obtain a Pro activation code through the following methods:
 
 + **Method One:** Purchase the activation code on [Xianyu (Idle Fish)]
   
@@ -248,7 +284,7 @@ New users can try it for free for 30 minutes. If you are satisfied with the tria
 + **Method Three:​** Overseas users, please contact the official email (hx0studio@foxmail.com) to purchase an activation code.
 ---
 
-## 10. Contact & feedback
+## 11. Contact & feedback
 **Hx0 Team (Hx0战队)**
 
 + WeChat official account / knowledge planet: **Hx0战队**
@@ -258,7 +294,6 @@ Please include browser + version, extension version, repro steps, and screenshot
 
 ---
 
-## 11. Disclaimer
+## 12. Disclaimer
 This project and extension are for **security research, development debugging, and authorized testing** only. Obey applicable laws and scope of authorization.  
 The authors and contributors **assume no liability** for **unauthorized testing** or its consequences.
-
