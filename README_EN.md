@@ -112,25 +112,30 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 - **Pro** unlocks **active traffic control, in-page replay / fuzzing, AI, dark-link review, batch workbenches, and advanced encode/decode tools**.
 - **First-install trial** grants **full Pro capability for 30 minutes**. If no activation code is applied after the trial, the product **automatically falls back to Community**.
 
-### Feature matrix
+### Feature Comparison Table
 
-| Feature | Community | Pro | Notes |
+| Feature | Community Edition | Pro Edition | Notes |
 | --- | --- | --- | --- |
-| Capture toggle, target host / IP, capture types / suffix filters | ✅ | ✅ | Community already covers the core capture setup |
-| History, current-page / all-packets switch, host / method / status filters | ✅ | ✅ | Basic locating and triage stay available |
-| Pretty / Raw / Hex / Render, copy / single-item export / copy full URL | ✅ | ✅ | Community keeps the core detail-audit workflow |
-| Built-in sensitive-information detection and rollup view | ✅ | ✅ | Built-in rules remain available in Community |
-| Normal replay | ✅ | ✅ | Community keeps the key validation loop intact |
-| Floating ball, save as new tab, language switching | ✅ | ✅ | Everyday convenience stays unlocked |
-| **Basic encode/decode**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex encode & decode | ✅ | ✅ | Available directly in Community |
-| **Advanced encode/decode**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, timestamp conversion | ❌ | ✅ | For deeper validation, signing, and analysis workflows |
-| Intercept toggle, modify / release / drop / release all / drop all | ❌ | ✅ | Represents active traffic control |
-| In-page replay, in-page Fuzz, Micro Fuzz, mark injection point | ❌ | ✅ | Useful for dynamic pages, WAF paths, and focused testing |
-| Switch request method, replay target switching | ❌ | ✅ | Useful for multi-environment validation |
-| AI analysis settings, AI result analysis, AI analysis, AI case generation | ❌ | ✅ | AI capabilities are part of Pro |
-| Dark-link & static threat detection, report export, trusted roots | ❌ | ✅ | Static review, reporting, and false-positive reduction |
-| Full deep search, custom regex rules, keyword library | ❌ | ✅ | Advanced search and rule-extension features |
-| Batch export, batch delete, batch replay, batch AI analysis, batch dark-link analysis | ❌ | ✅ | Batch workbenches are Pro-only |
+| Capture toggle, target domain / IP, capture types / suffixes | ✅ | ✅ | Community edition already covers basic capture and traffic noise reduction |
+| History list, current page / all packets switch, Host / Method / Status filters | ✅ | ✅ | Helps quickly locate target requests |
+| Pretty / Raw / Hex / Render, copy / single export / click title to copy URL | ✅ | ✅ | Community edition already supports core detail inspection |
+| Built-in sensitive data detection and aggregated view | ✅ | ✅ | Supports viewing hits from built-in rules |
+| Standard replay | ✅ | ✅ | Community edition keeps the full basic verification loop |
+| Floating ball, save as new tab, language switch | ✅ | ✅ | Daily efficiency entry points remain available in Community edition |
+| **Basic encode / decode**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex encode-decode | ✅ | ✅ | Directly available in Community edition |
+| **Advanced encode / decode**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, timestamp conversion | ❌ | ✅ | For deeper validation, signing, and analysis scenarios |
+| **Crypto Logic Intelligent Analysis (new in 1.0.1)** | ❌ | ✅ | Uses current request context plus same-page JS / HTML clues to help infer encoding, hashing, signing, or mixed encryption chains |
+| Intercept toggle, edit / release / release all / drop all | ❌ | ✅ | Represents the Pro ability to actively control traffic |
+| In-page replay, in-page Fuzz, Micro Fuzz, injection-point marker | ❌ | ✅ | Suitable for dynamic pages, WAF scenarios, and high-frequency parameter probing |
+| Switch request method, target domain override | ❌ | ✅ | Useful for multi-environment debugging and verification |
+| **Smart Proxy Dispatcher (new in 1.0.1)** | ❌ | ✅ | Located below `Capture types / suffixes` in Basic Settings. Routes matched requests to Burp, Yakit, or another upstream proxy by site rule, while unmatched traffic keeps its original path. Firefox additionally supports `Compatibility Mode / Takeover Mode` |
+| AI analysis settings, AI result view, AI analysis, AI case generation | ❌ | ✅ | All AI capabilities are grouped under Pro |
+| Dark-link and static threat detection, report download, trusted domain / TLD list | ❌ | ✅ | Rule-based scanning, reporting, and false-positive reduction |
+| Full deep search, custom regex / keyword libraries | ❌ | ✅ | Deep search and rule-extension capabilities |
+| Batch export, batch delete, batch replay, batch AI analysis, batch dark-link scan | ❌ | ✅ | Batch workbench features are all part of Pro |
+
+> Version `1.0.1` mainly adds two new Pro features: `Smart Proxy Dispatcher` and `Crypto Logic Intelligent Analysis`.
+
 
 ### Practical boundary
 
@@ -297,3 +302,19 @@ Please include browser + version, extension version, repro steps, and screenshot
 ## 12. Disclaimer
 This project and extension are for **security research, development debugging, and authorized testing** only. Obey applicable laws and scope of authorization.  
 The authors and contributors **assume no liability** for **unauthorized testing** or its consequences.
+
+---
+
+## 13. 1.0.1 Changelog
+
+This `1.0.1`update primarily focuses on the enhancement of two professional edition capabilities:
+
+- **Smart Proxy Dispatcher (Professional Edition)**: Added a proxy dispatch entry below the `Capture Type / Suffix`on the basic settings page. It can forward browser requests matching site rules to Burp, Yakit, or other upstream proxies, while unmatched requests continue on their original network path. This is suitable for integrating "native browser session capture" and "in-depth proxy debugging" into a single workflow, reducing the overhead of frequently switching system proxies.
+  
+
+<img width="430" height="599" alt="image" src="https://github.com/user-attachments/assets/64221294-63da-4aff-aeec-69250f0b6650" />
+
+
+- **Encryption Logic Intelligent Analysis (Professional Edition)**: Located to the right of the AI Analysis button. The model combines clues from the current request's URL, parameters, headers, body, and response, along with function names, field names, and submission flows from JS/HTML on the same page, to help determine if encoding, hashing, signing, or hybrid encryption is implemented on the front-end. It is suitable for reviewing changes in signature chains before and after packet modification.
+  
+- **Stability Improvements**: Concurrently strengthened details related to request header completion and proxy release in the standard capture mode, reducing display discrepancies and the probability of conflicts when switching between standard mode, intercept mode, and proxy settings.
