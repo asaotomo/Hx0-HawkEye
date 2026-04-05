@@ -90,9 +90,9 @@ Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **
 | **History** | **IndexedDB** persistence; filters by type, host, method, status, **sensitive hits**, search; default scope **current page** or **all packets**. |
 | **Intercept** | Queued hold; **edit, forward, drop** in the sidebar; bulk actions; shares target rules with capture. |
 | **Detail audit** | **Pretty / Raw / Hex**; response **Render** (sandbox); **sensitive** aggregation & highlights; copy full URL from title; download split raw **.txt**; **Burp-style** export. |
-| **Replay** | Edit raw traffic and replay; **in-page replay** (some WAF challenge pages, GET); undo/redo; host switch; **AI test cases** from current request/options (requires AI config). |
+| **Replay** | Edit raw traffic and replay; **in-page replay** (some WAF challenge pages); undo/redo; host switch; **AI test cases** from current request/options (requires AI config). |
 | **Encode / hash** | MD5, SM3, SHA, ROT13, Base64, URL, Hex, etc.; scope: **selection / param values only / full URL line**. |
-| **Micro Fuzz** | `§...§` injection points; **Start Fuzz** and **in-page Fuzz** (GET); baseline diff; **AI payloads** from model context; pair with Render, sensitive, and **AI result** views. |
+| **Micro Fuzz** | `§...§` injection points; **Start Fuzz** and **in-page Fuzz**; baseline diff; **AI payloads** from model context; pair with Render, sensitive, and **AI result** views. |
 | **Dark link & static threats** | Rule scan on static HTML, etc.; **high-trust TLD** allowlist; downloadable reports; **AI packet/semantic** interpretation; **batch dark-link** workbench for **horizontal compare** and **third-party script clues** (supply-chain first pass). |
 | **AI (optional)** | **Single packet**: interpret **request + response**, anomalies and risk notes. **Batch**: multi-select history, dedicated tab with **per-row highlights + summary** for multi-endpoint evidence. Models: OpenAI, DeepSeek, local LM Studio, **custom base URL**; **OpenAI-compatible** and paths such as **Baidu Qianfan coding plans**; traffic goes **only to your configured endpoint** (BYOK). |
 | **Sensitive matching** | Built-in rules (IDs, phones, cards, email, Shiro/JWT/Swagger/UEditor/Druid fingerprints, IP, domain, CTF flags, etc.) plus **custom regex** and **keyword lists**; import/export, clear-all. |
@@ -329,3 +329,5 @@ This `1.0.1`update primarily focuses on the enhancement of two professional edit
 
   
 - **Stability Improvements**: Concurrently strengthened details related to request header completion and proxy release in the standard capture mode, reducing display discrepancies and the probability of conflicts when switching between standard mode, intercept mode, and proxy settings.
+- **Sidebar and Batch Page Optimization**: Sidebar message display and interaction optimization (consistent across both ends), overall layout optimization of batch pages.  
+- **Enhanced In-Page Replay and In-Page Fuzz Functions**: Updated to support form POST (Request Header Content-Type: application/x-www-form-urlencoded).
