@@ -21,18 +21,20 @@ Built on capture, intercept, replay and AI automation, this release adds an inde
 <a id="whats-new"></a>
 ## What's new in 1.0.7?
 
-<a id="update-20261015"></a>
-### 2026.10/15 Update
+<a id="update-20261104"></a>
+### 2026.11/4 Update
 
-> This update builds on **v1.0.7** for both Chrome and Firefox.
+> This update builds on **v1.0.7** for Chrome and Firefox, with **MCP Server 1.0.15**.
 >
-> - **AI scene suggestions**: generate three or four useful work, learning, daily-life or entertainment ideas from the page, recent conversation, selected persona and Skills, and opted-in historical memory. Click to send; Refresh beside the pills requests another batch. Network failures can show labeled generic suggestions.
-> - **User-controlled suggestions**: a new Advanced-setting switch is on by default. Turn it off to hide the AI pills, stop suggestion generation and cancel pending requests; built-in home-screen task cards remain available with local Refresh to save tokens and local inference work. Normal chat and task execution continue.
-> - **Main panel startup**: faster main-panel startup after clicking the extension icon, with a fix for capture UI sometimes requiring a second click.
-> - **Agent question dialogs**: text and file requests use the composer; decisions offer concrete choices. Dismissed question dialogs can be reopened from their pending-reply bubble.
-> - **Codec accuracy**: preserve UTF-8 BOMs and fix CTR counter carry, empty-input handling, Quoted-Printable line wrapping and HTML entity compatibility.
-> - **MCP setup guidance**: correctly escaped Windows JSON/TOML paths. If no usable download path is available, locate the bundled `mcp-server/hawkeye-mcp-server.mjs` in the actual extension installation, then verify the file before configuring it.
-> - **Bilingual documentation**: direct navigation to Advanced model settings, plus updated guidance for the toggle, recommendation context, Refresh, fallback behavior and MCP server lookup.
+> - **Page performance and smart routing**: fix refresh/request loops, bound response-body concurrency, size and waits, and avoid redundant proxy-rule updates. Improve rapid switching, concurrent saves and recovery after failures.
+> - **Model capability support**: refine GLM, Kimi, MiMo, MiniMax, Grok, GPT and DeepSeek parameter/capability handling, label sources and retain per-model manual preferences.
+> - **Task-aware web search**: browser engines, DeepSeek Search and Tencent Yuanbao Search. When enabled, search according to the request, freshness needs and evidence gaps. Fix missing news-summary bodies; disabling search takes effect immediately.
+> - **Agent / MCP background work**: use separate task tabs with the existing login session and minimize browsing interruptions. Keep advanced scripts, media controls and fullscreen available; borrow the foreground when necessary, restore when appropriate and report the effects.
+> - **More natural action demos**: enable only when requested. Mouse-only actions show no keyboard; typing highlights matching keys. The cursor follows the actual hit point. Chinese uses offline pinyin demonstrations, passwords stay masked and skipped long-text animation is disclosed.
+> - **MCP Server 1.0.15**: 54 tools in the full profile, including independent action-demo sessions. Improve background entry, foreground borrowing/restoration, evaluation timeouts and queue recovery. Add mouse buttons, double-clicks, inner scrolling and complex targeting, with loaded-build receipts.
+> - **Scene suggestions with fewer model calls**: show page-matched offline ideas first, then replace them with AI results. Reuse suggestions in the browser session; resizing, focus and layout changes do not trigger generation. Align the loading notice with the composer.
+> - **Codecs and interface polish**: improve decoding and selection detection. Dismiss the smart decoding assistant until page reload. Fix dark mode, untranslated English controls, immediate approval-policy changes, OS-specific notification help and button alignment.
+> - **Personas, Skills and user manuals**: update presets and bilingual help for current capabilities while preserving custom content. The 13-card tour now leads with search, background work, action demos and MCP.
 
 This release turns individual data operations into reusable workflows, and connects page signals to results you can verify.
 
@@ -158,6 +160,8 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 
 **147 operations. Up to 16 steps per recipe.** Search for operations, add steps and reorder them. Run automatically as input changes, or disable Auto run and execute manually. Each step shows its status, so failures can be traced to the relevant operation.
 
+Codec handling preserves UTF-8 BOMs and correctly processes CTR counter carry, empty input, Quoted-Printable wrapping and HTML entities. Local decoding results remain available while AI analysis is pending or fails.
+
 Try it:
 
 1. Open **Codec → Codec & tools** and enter `flag{hello}`.
@@ -271,18 +275,22 @@ The scripts workbench also imports `.user.js` and ordinary JavaScript, with edit
 
 ![Agent home with task ideas for AI decoding, JSON comparison, recipes and three-point Fuzz](https://github.com/user-attachments/assets/616ffa38-4914-48f7-a3d1-5f90a19941bf)
 
-**PRO** Agent Mode connects the current browser to HawkEye tools. When enabled, AI scene suggestions generate **three or four ideas** from the page and conversation. Click to execute or Refresh; turn them off in Advanced settings to save tokens. Goal mode, plan mode, deep thinking, Skills, execution records, saved progress and task recovery are available.
+**PRO** Agent Mode connects the current browser to HawkEye tools. Goal mode, plan mode, deep thinking, Skills, execution records, saved progress and task recovery are available.
+
+**AI scene suggestions** are on by default and provide **three or four ideas** from the current page, recent conversation, selected persona and Skills, and opted-in historical memory. Click an idea to send it. Page-matched offline cards appear first and are replaced by AI results; failures retain labeled offline ideas. The browser session reuses cached suggestions. Resizing the sidebar, focus changes and layout changes do not regenerate them; use **Refresh** for another batch. Turning the feature off in Advanced settings hides AI pills, cancels pending requests and stops generation. Built-in home cards and local Refresh remain available, while normal chat and task execution continue.
+
+**Search, background work and action demos:** when search is enabled, Agent retrieves evidence according to the request, knowledge gaps and freshness needs, then delivers a sourced answer. Background work uses separate muted task tabs and does not copy unsaved edits. Ordinary steps minimize interruptions; necessary advanced scripts, playback, fullscreen and native input may use foreground capabilities and restore the original tab when appropriate. Enable action demos explicitly: mouse-only actions show no keyboard, and typing shows matching keys. The overlay does not take over your mouse or keyboard. Search, background and approval-policy changes apply to subsequent steps immediately.
 
 <a id="agent-workspace"></a>
 #### Workspace, references and attachment updates
 
 1. **Agent workspace and task ideas**: Reopening the sidebar restores its last tab. New ideas cover real bookmark organization, folder classification and filename plans, static page recreation and attachment revisions.
-2. **Model menu and @ references**: Search and switch models, with image-input settings saved for each model. Type `@` anywhere in the composer to reference selected text, tabs, bookmarks, attachments, generated files and enabled Skills, with each source clearly identified.
+2. **Model menu and @ references**: Search and switch models, with image-input settings saved for each model. Type `@` anywhere in the composer to reference selected text, tabs, bookmarks, attachments, generated files and enabled Skills, with each source clearly identified. The model setup shortcut opens Advanced model settings directly; capabilities identify their API / official-documentation / preset sources and retain manual choices.
 3. **Images and code attachments**: Paste or drop webpage images, text and code files. Detect text encodings and deduplicate/name images. Skill references do not use attachment slots. QR/barcode attachments and current-page images/canvases/SVG use local scanning independently of model vision. Multi-code long images return ordered results and pixel regions. Matching MCP tools also expose scanning and real bookmarks.
 4. **Files and live code editing**: Preview, edit and download code or reports with meaningful filenames. Generated JS/JSON is checked for syntax errors. Code preview and editing include line numbers and highlighting; Run confirms the corresponding webpage before execution. Refreshing task records preserves unsaved edits and your reading position.
 5. **Real bookmarks and local pages**: Read, page, classify, move and rename actual browser bookmarks with backups and protected roots/non-empty folders. Read permitted file:// pages. Folder classification uses supplied listings and does not move original disk files.
-6. **Smart decoding and assistant placement**: Ordinary language selections stay quiet; digits, braces and encoded material continue to open local decoding. Four assistants anchor to the visible page’s bottom-right corner, stay visible alongside a sidebar and retain dragged positions where possible.
-7. **Task clarification and language settings**: When scope, goals or parameters are missing, Agent offers choices and accepts custom answers; recommended choices require your confirmation. Built-in Skill names and descriptions follow the interface language, and help is available in Chinese and English.
+6. **Smart decoding and assistant placement**: Ordinary language selections stay quiet; digits, braces and encoded material continue to open local decoding. Four assistants anchor to the visible page’s bottom-right corner, stay visible alongside a sidebar and retain dragged positions where possible. Dismiss the smart decoding assistant for the rest of the current page lifecycle; reloading the page restores it.
+7. **Task clarification and language settings**: When scope, goals or parameters are missing, Agent offers choices and accepts custom answers; recommended choices require your confirmation. Built-in Skill names and descriptions follow the interface language, and help is available in Chinese and English. Text/file requests use the composer, decisions show concrete options and dismissed questions can be reopened from their pending-reply bubble. Preset personas and built-in Skills follow current capabilities while custom content is retained.
 
 Type `@` anywhere in the composer to open the context menu shown below. Model image-input settings are saved per model; local QR and barcode scanning also works with model vision disabled.
 
@@ -300,7 +308,7 @@ To use Skills, first select available skills in Advanced settings, then enable `
 
 ![Real Fetch requests from the local fixture appear in capture history](https://github.com/user-attachments/assets/50195e76-f397-4551-8b61-e599cdc0ebbb)
 
-Enable capture in Basic settings, set the target domain / IP and type rules, then reload the target page. History supports current-domain, current-tab and all-record views, plus Host / method / status / keyword filters.
+Enable capture in Basic settings, set the target domain / IP and type rules, then reload the target page. History supports current-domain, current-tab and all-record views, plus Host / method / status / keyword filters. Main-panel startup and capture-panel expansion are optimized to avoid occasional second clicks. Response-body reads have concurrency, size and time limits; smart routing avoids repeated proxy-rule writes.
 
 Details include Pretty / Raw / Hex / Render, with local edit drafts for requests and responses. Modify parameters in Replay and inspect the response. WebSocket supports frame observation, replay and rule-matched interception; frame replay needs an available connection. Sensitive matching, custom rules, deep keyword search and smart proxy routing remain available in Community.
 
@@ -332,14 +340,20 @@ Passive full-body capture uses browser debugging APIs. Some cross-origin `no-cor
 
 ### 3.10 HawkEye MCP integration
 
-**PRO** local MCP Server **1.0.14** exposes the real browser session, capture, replay, analysis and codec workbench to compatible clients. It supports stdio and Streamable HTTP / SSE. The single-file server runs with Node.js 18 or newer.
+**PRO** local MCP Server **1.0.15** exposes the real browser session, capture, replay, analysis and codec workbench to compatible clients. It supports stdio and Streamable HTTP / SSE. The single-file server runs with Node.js 18 or newer.
 
-Server 1.0.14 provides **53 tools**, which can be enabled as needed. Testing scope can specify both host and port. Use custom Fuzz payloads and returned record IDs to view historical replay / Fuzz responses. Request and response interception are separate stages: check the response queue after releasing a request. See §3.1 in the extension manual.
+Server 1.0.15 provides **54 tools**, which can be enabled as needed. Testing scope can specify both host and port. Use custom Fuzz payloads and returned record IDs to view historical replay / Fuzz responses. Request and response interception are separate stages: check the response queue after releasing a request. See §3.1 in the extension manual.
 
 
 1. Enable **HawkEye Browser Automation MCP** in the extension's Basic settings.
 2. Find `mcp-server/hawkeye-mcp-server.mjs` in the extracted package and follow the connection instructions in the UI.
 3. Copy the supplied configuration to the client. Confirm it can read the current page before using further tools.
+
+Escape Windows paths correctly for JSON / TOML. If no usable download path is available, locate `mcp-server/hawkeye-mcp-server.mjs` in the actual extension installation and verify it exists before configuring the client. After updating, reload the extension and target pages, replace the companion MJS, restart the MCP Host and refresh its tool list. Extension-owned JavaScript is obfuscated; the MJS remains readable.
+
+**Background and demo calls:** when the user requests background work, the client can enable an independent workspace with `browser_tabs` and `action: "background"`; ordinary behavior remains the default. `hawkeye_evaluate` accepts `timeoutMs` and `foreground: true`, borrows the foreground when needed and reports `foregroundFallback`, `foregroundStatus`, `foregroundRestored` and actual effects. Timed-out scripts are not replayed. `browser_action_demo` is off by default and enabled only on explicit user request, independently per MCP session. Connection receipts include the loaded `extensionRuntime` build and capabilities.
+
+**Mouse input and complex pages:** left/right/middle buttons, double-clicks and nearest-container scrolling are supported; Chrome can explicitly use a native wheel. Take a new snapshot after opening a webpage context menu and select its item by ref. Browser/OS menus are outside DOM snapshots. Forms are relocated after scrolling and selection is checked, with frame-local targeting and bounded virtual-list searches. Canvas targets require screenshot-confirmed points. For owned slider fixtures, metrics/dryRun expose CSS geometry, ratio basis and displacement; solve requires acceptance evidence from the current challenge. Event delivery or dialog closure alone is not success. Third-party anti-bot checks need human handling, and unavailable native input returns an explicit error.
 
 Example stdio configuration; replace the path with your actual absolute path:
 
@@ -358,11 +372,11 @@ In 1.0.7, catalog lookup, recipe execution, comparison, code generation / decodi
 
 ### 3.11 Feature introductions and updates
 
-After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time.
+After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time. The first four of 13 cards introduce search, background work, action demos and MCP 1.0.15. Both manuals explain the suggestion switch, recommendation context, caching, Refresh and fallback behavior.
 
 When the official GitHub service is reachable, the extension attempts an update check at least daily. Offline or unreachable intranet environments are skipped quietly, without interrupting local work. An available update adds a red dot above the footer version link, which opens the official project.
 
-Update notices track the **official ZIP for your browser**. When a possible update is shown, review the official release page before downloading and installing it.
+Update notices use the **official ZIP for your browser and the build identity in the release notes**. Older builds of the same 1.0.7 version show a red dot after the next online check; installing the matching build clears it. An existing daily-check cache can defer detection until the next day. Updates are not installed automatically.
 
 ---
 
@@ -392,7 +406,7 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | In-Page Replay, In-Page Fuzzing, **HTTP / WebSocket Micro Fuzz**, Injection Point Marking                                           | ❌                 | ✅                    | Suitable for dynamic pages, WAF testing, real-time channels, and high-frequency parameter probing                                                                                                                                                                                                                                   |
 | Switch HTTP Method, Switch Target Domain                                                                          | ❌                 | ✅                    | Useful for multi-environment debugging and verification                                                                                                                                                                                                                                                                |
 | **Intelligent Proxy Router (v1.0.1; Community since v1.0.6)**                                                     | ✅                 | ✅                    | Located below “Capture Type / Suffix” in Settings. Requests matching site rules can be automatically forwarded to upstream proxies such as Burp Suite or Yakit, while unmatched traffic continues using the original network path. The Firefox version additionally supports “Compatibility Mode” and “Takeover Mode”. |
-| **HawkEye Browser Automation MCP (v1.0.6)**                                                                        | ❌                 | ✅                    | Local Server 1.0.14 uses the real browser session for capture, intercept, replay, analysis, and evidence tools |
+| **HawkEye Browser Automation MCP (v1.0.6)**                                                                        | ❌                 | ✅                    | Local Server 1.0.15 uses the real browser session for capture, intercept, replay, analysis, and evidence tools |
 | **Browser-level Agent / Agent Mode (v1.0.6)**                                                                      | ❌                 | ✅                    | Available during an active trial or with Pro; chat can change extension settings and use tools, with task progress recovery; cross-chat summary memory is off by default |
 | AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
 | **AI Task Console (since v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **Skills knowledge bases**, **in-task supplementary hints**; **timeline log with draggable split** (v1.0.5);  ties history, replay, and evidence into reports                                                                                                                                |
@@ -875,10 +889,11 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - **Independent codec workbench:** 147 operation entries and recipes of up to 16 steps, with one workspace for basic data processing and advanced parameterized operations.
 - **Smart decoding and practical data tools:** multi-layer paths, locally verified AI suggestions, Morse punctuation, text / JSON comparison, binary-file recovery, IP and QR / barcode tools.
 - **Four official page assistants:** shortcuts, AI results and analysis suggestions, with improved reading and controls; mail review supports local EML files.
-- **Agent / MCP and micro Fuzz:** AI scene suggestions, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
+- **Agent / MCP and micro Fuzz:** AI scene suggestions, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.15.
 - **Feature tour and update notices:** A feature tour introduces the main entry points, with daily online checks for official updates.
 - **Stability and diagnostics:** improved target URL matching, page interaction after upgrades and cancellation feedback; clearer search failures and fallback options.
 
 See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The 1.0.1–1.0.6 changelogs are on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
 
-<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"bb8bac43ddd976ee66c757ed2af316fafe236ae14c15d6fb9fc9bff977eaa292","builtAt":"2026-10-14T22:44:13.080Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"19f1b92493bf66f48499a8bf17431312ede77a164737c7d16278ae1f1734a512","builtAt":"2026-10-14T22:44:14.148Z"}}} -->
+<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"26b3770f8c52103abdf374d84f0a2ef648514b041d06edb39609be32a820f5ee","builtAt":"2026-11-04T05:58:44.585Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"fc97421a0feceb39a5b53f2f215fd4337842c4ce69ce47ab195d1cc55825a31f","builtAt":"2026-11-04T05:58:44.568Z"}}} -->
+
